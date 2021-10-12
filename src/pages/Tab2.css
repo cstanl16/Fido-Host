@@ -1,0 +1,18 @@
+:root {
+    --ion-background-color: #fff44f;
+}
+
+.homePageTitle {
+    font-size: 30px;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.searchTitle {
+    text-align: center;
+}
+
+.moreInfoOnSearch {
+    --background: aqua;
+    color: black;
+}
