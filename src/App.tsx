@@ -1,8 +1,9 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,
 } from '@ionic/react';
+import React from 'react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { triangle, ellipse, square } from 'ionicons/icons';
 import FoodList from './components/food-list.component.js';
 import CreateFood from './components/create-food.component.js';
 import EditFood from './components/edit-food.component.js';
@@ -62,12 +63,15 @@ const App: React.FC = () => (
             <IonIcon icon={ellipse} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
-        </IonTabBar>
 
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Home</IonLabel>
+          <IonTabButton tab="tab2" href="/tab2">
+            <IonIcon icon={square} />
+            <IonLabel>Login</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="create" href="/create">
+            <IonIcon icon={triangle} />
+            <IonLabel>Create</IonLabel>
           </IonTabButton>
         </IonTabBar>
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
+import "SearchBar.css";
 
 function SearchBar({ data }) {
   const [filteredData, setFilteredData] = useState([]);
@@ -28,24 +29,26 @@ function SearchBar({ data }) {
 
   return (
     <div className="search">
-      <div className="searchInputs">
-        
-        <input
+
+      <div className="searchBar">
+
+        <text className="here"
           type="text"
           value={wordEntered}
           onChange={handleFilter}
         />
 
-        <div className="searchIcon">
-          {filteredData.length === 0 ? (
-            <SearchIcon />
-          ) : (
-            <CloseIcon id="clearBtn" onClick={clearInput} />
-          )}
-        </div>
+      </div>
+      
+      <div className="searchIcon">
+        
+        {filteredData.length === 0 ? (
+          <SearchIcon />
+        ) : (
+          <CloseIcon id="clearBtn" onClick={clearInput} />
+        )}
 
       </div>
-
 
     </div>
     

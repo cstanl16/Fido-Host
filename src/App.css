@@ -1,10 +1,8 @@
-:root {
-    --ion-background-color: #fff44f;
-}
-
 .homePageTitle {
+    margin-top: 0px;
     font-size: 60px;
     padding-top: 25px;
+    padding-bottom: 50px;
     text-align: center;
 }
 
@@ -18,6 +16,86 @@
 }
 
 .foodListShow {
-
     display: none;
+}
+
+.main2 {
+    background-color: black;
+}
+
+.test {
+    background-color: purple;
+}
+
+.search {
+    margin: 0px;
+    margin-left: 30%;
+    width: 40%;
+    text-align: left;
+    align-items: center;
+    background: white;
+    height: 44px;
+    border-radius: 8px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    border-width: 0px;
+    display: inline-block;
+    color: black;
+    margin-right: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.searchButton {
+    margin: 0px;
+    width: 15%;
+    text-align: center;
+    align-items: center;
+    height: 44px;
+    border-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-width: 0px;
+    display: inline-block;
+    color: black;
+    margin-right: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.searchBar{
+    width: 100px;
+    text-align: left;
+    align-items: center;
+    background: purple;
+}
+
+.hello {
+    background-color: purple;
+    padding: 12px;
+}
+
+.foodReturn {
+    font-size: 30px;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.foodReturn h1 {
+    font-size: 80px;
+    font-family: fantasy;
+}
+
+.learnMore {
+    text-align: center;
+    align-items: center;
 }

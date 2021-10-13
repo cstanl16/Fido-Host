@@ -15,7 +15,7 @@ class CreateFood extends Component {
         this.state = {
             foodName: '', 
             foodType: '',
-            foodSafe: 0,
+            foodSafe: '',
             foodNotes: '',
         };
     };
@@ -44,13 +44,6 @@ class CreateFood extends Component {
         });
     };
 
-
-    onChangeDate(date) {
-        this.setState({
-            foodNotes: date //MAKE THIS GET TODAYS DATE
-        });
-    };
-
     onSubmit(e) {
         e.preventDefault();
 
@@ -68,11 +61,6 @@ class CreateFood extends Component {
                 console.log(res.data);
                 window.location = '/tab3';
             });
-    };
-
-    focus() {
-        // Explicitly focus the text input using the raw DOM API
-        this.textInput.focus();
     };
     
     render() {
