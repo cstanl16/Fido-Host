@@ -13,7 +13,7 @@ export const Food = (props) => {
         );
     }
 
-    else if ((props.food.foodSafe === "Yes" && props.food.foodSafe != '') || (props.food.foodSafe === "no"  && props.food.foodSafe != '')) {
+    else if ((props.food.foodSafe === "Yes" && props.food.foodSafe !== '') || (props.food.foodSafe === "no"  && props.food.foodSafe !== '')) {
         return(
             <div className="foodReturn">
                 <h1>Yes!</h1>
@@ -31,7 +31,8 @@ export const Food = (props) => {
             </div>
         ); 
     }
-    else if  ((props.food.foodSafe === "No" && props.food.foodSafe != '') || (props.food.foodSafe === "no"  && props.food.foodSafe != '')) {
+
+    else if  ((props.food.foodSafe === "No" && props.food.foodSafe !== '') || (props.food.foodSafe === "no"  && props.food.foodSafe !== '')) {
         return(
             <div className="foodReturn">
                 <h1>Yes!</h1>
@@ -39,7 +40,8 @@ export const Food = (props) => {
                 <p>{props.food.foodNotes}</p>
             </div>
         ); 
-    }{
+    }
+    else {
         console.log("We finally got here!!!");
         x = "Please try clicking the help me learn more button!";
     }

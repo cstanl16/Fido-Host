@@ -6,6 +6,8 @@ import { IonReactRouter } from '@ionic/react-router';
 import { triangle, ellipse, square } from 'ionicons/icons';
 import FoodList from './components/food-list.component.js';
 import CreateFood from './components/create-food.component.js';
+import LoginPage from './components/loginPage.component.js';
+import CreateUser from './components/createUser.component.js';
 import EditFood from './components/edit-food.component.js';
 import Tab3 from './pages/Tab3.js';
 import './App.css';
@@ -39,10 +41,6 @@ const App: React.FC = () => (
             <Tab3 />
           </Route>
 
-          <Route exact path="/">
-            <Redirect to="/tab3" />
-          </Route>
-
           <Route exact path="/foodList">
             <FoodList/>
           </Route>
@@ -51,8 +49,20 @@ const App: React.FC = () => (
             <CreateFood/>
           </Route>
 
+          <Route exact path="/newUser">
+            <CreateUser/>
+          </Route>
+
+          <Route exact path="/login">
+            <LoginPage/>
+          </Route>
+
           <Route path ="/edit/:id">
             <EditFood/>
+          </Route>
+
+          <Route exact path="/">
+            <Redirect to="/tab3" />
           </Route>
 
         </IonRouterOutlet>
@@ -64,7 +74,7 @@ const App: React.FC = () => (
             <IonLabel>Home</IonLabel>
           </IonTabButton>
 
-          <IonTabButton tab="tab2" href="/tab2">
+          <IonTabButton tab="login" href="/login">
             <IonIcon icon={square} />
             <IonLabel>Login</IonLabel>
           </IonTabButton>
