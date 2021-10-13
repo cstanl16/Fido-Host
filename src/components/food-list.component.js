@@ -4,13 +4,42 @@ import axios from 'axios';
 export const Food = (props) => {
     
     var x = '';
-    if (props.food.foodSafe === "Yes") {
-        x = "Dogs can eat ";
+    if ((props.food.foodSafe === "Yes" && props.food.foodSafe === '') || (props.food.foodSafe === "no"  && props.food.foodSafe === '')) {
+        return(
+            <div className="foodReturn">
+                <h1>Yes!</h1>
+                <p>Dogs can eat {props.food.foodName}</p>
+            </div>
+        );
     }
-    else if (props.food.foodSafe === "No") {
-        x = "Dogs can't eat ";
+
+    else if ((props.food.foodSafe === "Yes" && props.food.foodSafe != '') || (props.food.foodSafe === "no"  && props.food.foodSafe != '')) {
+        return(
+            <div className="foodReturn">
+                <h1>Yes!</h1>
+                <p>Dogs can eat {props.food.foodName}</p>
+                <p>{props.food.foodNotes}</p>
+            </div>
+        );
     }
-    else  {
+
+    else if ((props.food.foodSafe === "No" && props.food.foodSafe === '') || (props.food.foodSafe === "no"  && props.food.foodSafe === '')) {
+        return(
+            <div className="foodReturn">
+                <h1>Yes!</h1>
+                <p>Dogs can't eat {props.food.foodName}</p>
+            </div>
+        ); 
+    }
+    else if  ((props.food.foodSafe === "No" && props.food.foodSafe != '') || (props.food.foodSafe === "no"  && props.food.foodSafe != '')) {
+        return(
+            <div className="foodReturn">
+                <h1>Yes!</h1>
+                <p>Dogs can't eat {props.food.foodName},</p>
+                <p>{props.food.foodNotes}</p>
+            </div>
+        ); 
+    }{
         console.log("We finally got here!!!");
         x = "Please try clicking the help me learn more button!";
     }
@@ -18,7 +47,7 @@ export const Food = (props) => {
     return(
         <div className="foodReturn">
             <h1>{props.food.foodSafe}!</h1>
-            <p>{x} {props.food.foodName}</p>
+            <p>{x}</p>
         </div>
     );
 
@@ -50,7 +79,7 @@ export default class FoodList extends Component {
         axios.get('https://final-project-node-server-zron8.ondigitalocean.app/food') //username/'+this.props.username
         .then(response => {
             this.setState({ foodItems: response.data });
-            console.log({ foodItems: response.data });
+            //console.log({ foodItems: response.data }); uncomment to see all entries of db in console
             this.filterFoodList();
         })
         .catch((error) => {
