@@ -3,7 +3,7 @@ import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, Io
 } from '@ionic/react';
 import React from 'react';
 import { IonReactRouter } from '@ionic/react-router';
-import { triangle, ellipse, square } from 'ionicons/icons';
+import { triangle, ellipse, square, searchOutline, personOutline, createOutline } from 'ionicons/icons';
 import FoodList from './components/food-list.component.js';
 import CreateFood from './components/create-food.component.js';
 import LoginPage from './components/loginPage.component.js';
@@ -70,17 +70,17 @@ const App: React.FC = () => (
 
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={ellipse} />
+            <IonIcon icon={searchOutline} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
 
           <IonTabButton tab="login" href="/login">
-            <IonIcon icon={square} />
+            <IonIcon icon={personOutline} />
             <IonLabel>Login</IonLabel>
           </IonTabButton>
 
           <IonTabButton tab="create" href="/create">
-            <IonIcon icon={triangle} />
+            <IonIcon icon={createOutline} />
             <IonLabel>Create</IonLabel>
           </IonTabButton>
         </IonTabBar>
