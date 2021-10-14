@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IonContent, IonPage, IonButton } from '@ionic/react';
+import { IonButton } from '@ionic/react';
 import FoodList from '../components/food-list.component.js';
 import SearchBox from '../components/SearchBox.js';
 
@@ -20,17 +20,17 @@ class Tab3 extends Component{
         }
     }
 
-     onChange(event) {
+    onChange(event) {
         this.setState({searchText: event.target.value});
         var x = document.getElementById("foodListShow");
             x.style.display = "none";
-     }
+    }
 
     routeToFoodInfo() {
         const url = `https://www.akc.org/?s=${this.state.searchText}/`
         window.location.href = url;
         
-      }
+    }
 
     onSearch() {
         var x = document.getElementById("foodListShow");
@@ -47,8 +47,7 @@ class Tab3 extends Component{
             y.style.backgroundColor = "#D82E3F";
         }
         else {
-            var z = document.getElementById("main");
-            z.style.backgroundColor = "purple";
+            //MAYBE SOMETHING HERE????
         }
     }
 
@@ -59,27 +58,25 @@ class Tab3 extends Component{
     render() {
 
         return(
-            <IonPage>
-                <IonContent fullscreen >
-                    <div id="main" style={{paddingBottom: "736px"}}>
-                        <h1 className="homePageTitle">
-                            What Can Fido Eat?
-                        </h1>
+            <div id="main" style={{paddingBottom: "736px"}}>
+                <h1 className="homePageTitle">
+                    What Can Fido Eat?
+                </h1>
 
-                        <SearchBox Autocomplete className="here" value={this.state.searchText} handleChange={this.onChange} showCancelButton="never"/>
-                        <button className="searchButton" value="search" onClick={ this.onSearch }>Search</button>
+                <SearchBox Autocomplete className="here" value={this.state.searchText} handleChange={this.onChange} showCancelButton="never"/>
+                <button className="searchButton" value="search" onClick={ this.onSearch }>Search</button>
 
 
-                        <div id="foodListShow" >
-                            <FoodList parentCallback = { this.handleCallback } key = { this.state.searchText } foodName = {this.state.searchText}/>
-                        </div>
+                <div id="foodListShow" >
+                    <FoodList parentCallback = { this.handleCallback } key = { this.state.searchText } foodName = {this.state.searchText}/>
+                </div>
 
-                        <div className="learnMore">
-                        <IonButton onClick={ this.routeToFoodInfo } class="moreInfoOnSearch">Help Me learn More!</IonButton>
-                        </div>
-                    </div>
-                </IonContent>
-            </IonPage>
+               {/*  <div id="foodNotFound">Not Found</div> */}
+
+                <div className="learnMore">
+                    <IonButton onClick={ this.routeToFoodInfo } class="moreInfoOnSearch">Help Me learn More!</IonButton>
+                </div>
+            </div>
         );
 
         
