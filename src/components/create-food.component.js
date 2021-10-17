@@ -65,33 +65,31 @@ class CreateFood extends Component {
     
     render() {
         return (
-            <div className="createBudgetDiv">
-                <h3 className="createBudgetH3">Create a new Food Item</h3>
-                <form className="createBudgetForm" onSubmit={this.onSubmit}>
+            
+            <div className="createUserPage">
+                <h3 className="createUserH3">Create Food</h3>
+                <form className="createUserForm" onSubmit={this.onSubmit}>
 
                     <div className="">
-                        <label>Food Name:</label>
-                        <input type="text" className="createBudgetInput" value={this.state.foodName} onChange={this.onChangeFoodName}/>
+                        <input type="text" placeholder="Food Name" className="createUserInput" value={this.state.foodName} onChange={this.onChangeFoodName}/>
                     </div>
 
                     <div>
-                        <label>Food Type: </label>
-                        <input type="text" className="createBudgetInput" value={this.state.foodType} onChange={this.onChangeFoodType}/>
+                        <input type="text" placeholder="Food Type" className="createUserInput" value={this.state.foodType} onChange={this.onChangeFoodType}/>
                     </div>
 
                     <div>
-                        <label>Food Safe: </label>
-                        <input type="text" className="createBudgetInput" value={this.state.foodSafe} onChange={this.onChangeFoodSafe}/>
+                        <input type="text" placeholder="Food Safe" className="createUserInput" value={this.state.foodSafe} onChange={this.onChangeFoodSafe}/>
                     </div>
 
                     <div>
-                        <label>Food Notes: </label>
-                            <input type="text" className="createBudgetInput" selected={this.state.foodNotes} onChange={this.onChangeFoodNotes}/>
+                            <input type="text" placeholder="Food Notes" className="createUserInput" selected={this.state.foodNotes} onChange={this.onChangeFoodNotes}/>
                     </div>
 
-                    <div>
-                        <input type="submit" className="createBudgetButton" value="Create New Food Item" />
+                    <div className="createUserButtonDiv">
+                        <button className="createUserButton" onSubmit={this.onSubmit}>done! </button>
                     </div>
+                    
                 </form>
             </div>
         );

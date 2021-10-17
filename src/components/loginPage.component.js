@@ -55,33 +55,23 @@ class login extends Component {
     
     render() {
         return (
-            <div className="createBudgetDiv">
-                <h3 className="createBudgetH3">Login!</h3>
-                <form className="createBudgetForm" onSubmit={this.onSubmit}>
+            <div className="createUserPage">
+                <h3 className="createUserH3">Login</h3>
+                <form className="createUserForm" onSubmit={this.onSubmit}>
 
-                    <div>
-                        <label>Username: </label>
-                        <input type="text" className="createBudgetInput" value={this.state.username} onChange={this.onChangeUsername}/>
+                    <div className="">
+                        <input type="text" placeholder="Username" className="createUserInput" value={this.state.username} onChange={this.onChangeUsername}/>
                     </div>
 
                     <div>
-                        <label>password: </label>
-                            <input type="text" className="createBudgetInput" selected={this.state.password} onChange={this.onChangePassword}/>
+                        <input type="text" placeholder="Password" className="createUserInput" value={this.state.password} onChange={this.onChangePassword}/>
                     </div>
 
-                    <div>
-                        <button onSubmit={this.onSubmit}>Login </button>
+                    <div className="createUserButtonDiv">
+                        <button className="createUserButton" onSubmit={this.onSubmit}>done! </button>
                     </div>
-
-                   
-
-
+                    
                 </form>
-
-                <div>
-                    <button className="createBudgetButton" onClick={this.onRouteToNewUser}>  New Account </button>
-                </div>
-                
             </div>
         );
     };

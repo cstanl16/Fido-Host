@@ -96,47 +96,40 @@ class CreateUser extends Component {
     
     render() {
         return (
-            <div className="createBudgetDiv">
-                <h3 className="createBudgetH3">Create account</h3>
-                <form className="createBudgetForm" onSubmit={this.onSubmit}>
+            <div className="createUserPage">
+                <h3 className="createUserH3">Create account</h3>
+                <form className="createUserForm" onSubmit={this.onSubmit}>
 
                     <div className="">
-                        <label>Full Name</label>
-                        <input type="text" className="createBudgetInput" value={this.state.name} onChange={this.onChangeName}/>
+                        <input type="text" placeholder="Full Name" className="createUserInput" value={this.state.name} onChange={this.onChangeName}/>
                     </div>
 
                     <div>
-                        <label>Username: </label>
-                        <input type="text" className="createBudgetInput" value={this.state.username} onChange={this.onChangeUsername}/>
+                        <input type="text" placeholder="Username" className="createUserInput" value={this.state.username} onChange={this.onChangeUsername}/>
                     </div>
 
                     <div>
-                        <label>email: </label>
-                        <input type="text" className="createBudgetInput" value={this.state.email} onChange={this.onChangeEmail}/>
+                        <input type="text" placeholder="email" className="createUserInput" value={this.state.email} onChange={this.onChangeEmail}/>
                     </div>
 
                     <div>
-                        <label>password: </label>
-                            <input type="text" className="createBudgetInput" selected={this.state.password} onChange={this.onChangePassword}/>
+                            <input type="text" placeholder="password" className="createUserInput" selected={this.state.password} onChange={this.onChangePassword}/>
                     </div>
 
                     <div>
-                        <label>password: </label>
-                            <input type="text" className="createBudgetInput" selected={this.state.password2} onChange={this.onChangePassword2}/>
+                            <input type="text" placeholder="password" className="createUserInput" selected={this.state.password2} onChange={this.onChangePassword2}/>
                     </div>
 
                     <div>
-                        <label>Dog Type: </label>
-                            <input type="text" className="createBudgetInput" selected={this.state.dogType} onChange={this.onChangeDogType}/>
+                            <input type="text" placeholder="Dog Type" className="createUserInput" selected={this.state.dogType} onChange={this.onChangeDogType}/>
                     </div>
 
                     <div>
-                        <label>Dog Name: </label>
-                            <input type="text" className="createBudgetInput" selected={this.state.dogName} onChange={this.onChangeDogName}/>
+                            <input type="text" placeholder="Dog Name" className="createUserInput" selected={this.state.dogName} onChange={this.onChangeDogName}/>
                     </div>
 
-                    <div>
-                        <button onSubmit={this.onSubmit}>done! </button>
+                    <div className="createUserButtonDiv">
+                        <button className="createUserButton" onSubmit={this.onSubmit}>done! </button>
                     </div>
                     
                 </form>
