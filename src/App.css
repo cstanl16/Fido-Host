@@ -29,7 +29,7 @@
 
 .search {
     margin: 0px;
-    margin-left: 30%;
+    margin-left: 18%;
     width: 40%;
     text-align: left;
     align-items: center;
@@ -43,7 +43,7 @@
     color: black;
     margin-right: 0px;
     padding: 0px;
-    padding-left: 10px;
+    padding-left: 5px;
     font-size: 20px;
     margin-bottom: 40px;
 }
@@ -54,7 +54,7 @@
 
 .searchButton {
     margin: 0px;
-    width: 15%;
+    width: 25%;
     text-align: center;
     align-items: center;
     height: 44px;
@@ -68,12 +68,12 @@
     padding: 0px;
     padding-left: 10px;
     font-size: 20px;
-}
+} 
 
 .searchBar{
     width: 100px;
     text-align: left;
-    align-items: center;
+    align-items: left;
     background: purple;
 }
 
