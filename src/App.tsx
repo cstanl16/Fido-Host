@@ -3,7 +3,7 @@ import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, Io
 } from '@ionic/react';
 import React from 'react';
 import { IonReactRouter } from '@ionic/react-router';
-import { triangle, ellipse, square, searchOutline, personOutline, createOutline } from 'ionicons/icons';
+import { searchOutline, personOutline, createOutline } from 'ionicons/icons';
 import FoodList from './components/food-list.component.js';
 import CreateFood from './components/create-food.component.js';
 import LoginPage from './components/loginPage.component.js';
