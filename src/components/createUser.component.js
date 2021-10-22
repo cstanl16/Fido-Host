@@ -45,17 +45,57 @@ class CreateUser extends Component {
     };
 
     onChangePassword(e) {
+        var updatedPassword = e.target.value;
+        
         this.setState({
-            password: e.target.value
+            password: updatedPassword
         });
+ 
+        if (updatedPassword === this.state.password2) {
+
+            var a = document.getElementById("createUserSubmitButton");
+                a.className = "createUserButton";
+
+            var b = document.getElementById("testMatch");
+                b.className = "Match";
+
+        }
+        else if (updatedPassword !== this.state.password2) {
+
+            var c = document.getElementById("createUserSubmitButton");
+                c.className = "Disabled";
+
+            var d = document.getElementById("testMatch");
+                d.className = "noMatch";
+        } 
+
     };
 
     onChangePassword2(e) {
+        var updatedPassword2 = e.target.value;
+
         this.setState({
-            password2: e.target.value
+            password2: updatedPassword2
         });
 
-        //if password 2 doesnt match send error
+        if (this.state.password === updatedPassword2) {
+
+            var a = document.getElementById("createUserSubmitButton");
+                a.className = "createUserButton";
+
+            var b = document.getElementById("testMatch");
+               b.className = "Match";
+
+        }
+        else if (this.state.password !== updatedPassword2) {
+
+            var c = document.getElementById("createUserSubmitButton");
+                c.className = "Disabled";
+
+            var d = document.getElementById("testMatch");
+               d.className = "noMatch";
+
+        } 
 
     };
 
@@ -79,7 +119,6 @@ class CreateUser extends Component {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            password2: this.state.password2,
             dogType: this.state.dogType,
             dogName: this.state.dogName
 
@@ -116,6 +155,10 @@ class CreateUser extends Component {
                             <input type="text" placeholder="password" className="createUserInput" selected={this.state.password} onChange={this.onChangePassword}/>
                     </div>
 
+                    <div id="testMatch" className="Match">
+                        Passwords Must match!
+                    </div>
+
                     <div>
                             <input type="text" placeholder="password" className="createUserInput" selected={this.state.password2} onChange={this.onChangePassword2}/>
                     </div>
@@ -129,7 +172,7 @@ class CreateUser extends Component {
                     </div>
 
                     <div className="createUserButtonDiv">
-                        <button className="createUserButton" onSubmit={this.onSubmit}>done! </button>
+                        <button id="createUserSubmitButton" className="createUserButton" onSubmit={this.onSubmit}>done! </button>
                     </div>
                     
                 </form>
