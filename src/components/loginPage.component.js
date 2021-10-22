@@ -8,13 +8,14 @@ class login extends Component {
 
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
-        //this.onSubmitLogin = this.onSubmitLogin.bind(this);
+        this.onRouteToCreate = this.onRouteToCreate.bind(this);
+        this.findUser = this.findUser.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.onRouteToNewUser = this.onRouteToNewUser.bind(this);
 
         this.state = {
             username: '', 
             password: '',
+            users: []
         };
     };
 
@@ -40,19 +41,46 @@ class login extends Component {
 
         console.log(user);
 
-        Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/user/add', user)
-            .then(res => {
-                console.log(res.data);
-                window.location = '/tab3';
+        Axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user')
+            .then(response => {
+                this.setState({ users: response.data });
+                //console.log({ foodItems: response.data }); uncomment to see all entries of db in console
+                this.findUser();
+            })
+            .catch((error) => {
+                console.log(error);
             });
+
     };
 
-    onRouteToNewUser() {
-        const url = 'http://localhost:3000/newuser' //change when hosted!
+    onRouteToCreate() {
+        const url = 'https://fido-host-qqizf.ondigitalocean.app/newuser'
         window.location.href = url;
         
     }
-    
+
+    findUser() {
+        console.log("i am here");
+        var i = 0;
+        do {
+
+            if (this.state.users[i].user.username === this.state.username) {
+                console.log("found username");
+                if (this.state.users[i].password === this.state.password) {
+                    console.log("logged in!");
+                }
+                else {
+                    console.log("Incorrect Password");
+                }
+            }
+            else {
+                i++;
+            }
+
+        }while(this.state.users[i].username !== this.state.username);
+
+    }
+
     render() {
         return (
             <div className="createUserPage">
@@ -68,7 +96,11 @@ class login extends Component {
                     </div>
 
                     <div className="createUserButtonDiv">
-                        <button className="createUserButton" onSubmit={this.onSubmit}>done! </button>
+                        <button className="createUserButton" onClick={this.onSubmit}>Login! </button>
+                    </div>
+
+                    <div className="createUserButtonDiv">
+                        <button className="createUserButton" onClick={this.onRouteToCreate}>Create Account here! </button>
                     </div>
                     
                 </form>

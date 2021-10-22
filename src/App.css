@@ -161,4 +161,36 @@
         font-size: 20px;
 }
 
+.Disabled {
+    margin: 0px;
+    width: 15%;
+    text-align: center;
+    align-items: center;
+    height: 44px;
+    border-radius: 8px;
+    border-width: 0px;
+    display: inline-block;
+    color: black;
+    margin-right: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.noMatch {
+    display: inline-block;
+    color: #ff0033 ;
+    font-size: 24px;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 30%;
+}
+
+.Match {
+    display: none;
+}
+
 /************************************* Login User Page ***********************************/
+
+
