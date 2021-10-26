@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { IonButton } from '@ionic/react';
 import FoodList from '../components/food-list.component.js';
 import SearchBox from '../components/SearchBox.js';
+import petco from './petco.jpg';
 
 
 class Tab3 extends Component{
@@ -55,6 +56,11 @@ class Tab3 extends Component{
         return ;
     }
 
+    adInfo() {
+        const url = `https://www.petco.com`
+        window.location.href = url;
+    }
+
     render() {
 
         return(
@@ -75,6 +81,10 @@ class Tab3 extends Component{
 
                 <div className="learnMore">
                     <IonButton onClick={ this.routeToFoodInfo } class="moreInfoOnSearch">Help Me learn More!</IonButton>
+                </div>
+
+                <div className="ad" onClick={ this.adInfo }>
+                    <img src={petco} alt="petco"></img>
                 </div>
             </div>
         );
