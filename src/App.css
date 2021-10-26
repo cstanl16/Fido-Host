@@ -1,3 +1,38 @@
+.bottomRow {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.votes {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100px;
+    height: 120px;
+    margin: auto;
+    text-align: center;
+}
+
+#upvote {
+    background-color: #5CDB95;
+    color: #222423;
+    font-size: 40px;
+}
+
+#upvote:hover {
+    color: green;
+}
+
+#downvote {
+    background-color: #5CDB95;
+    color: #222423;
+    font-size: 40px;
+}
+
+#downvote:hover {
+    color: red;
+}
+
 .homePageTitle {
     margin-top: 0px;
     font-size: 60px;

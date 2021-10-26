@@ -4,11 +4,12 @@ import FoodList from '../components/food-list.component.js';
 import SearchBox from '../components/SearchBox.js';
 import petco from './petco.jpg';
 
-
 class Tab3 extends Component{
     constructor(props) {
         super(props);
 
+        this.countChangeUp = this.countChangeUp.bind(this);
+        this.countChangeDown = this.countChangeDown.bind(this);
         this.onChange = this.onChange.bind(this);
         this.handleCallback = this.handleCallback.bind(this);
         this.onSearch = this.onSearch.bind(this);
@@ -18,13 +19,14 @@ class Tab3 extends Component{
             searchText: '',
             searchFood: '',
             foodSafe: '',
+            count: 0,
         }
     }
 
     onChange(event) {
         this.setState({searchText: event.target.value});
         var x = document.getElementById("foodListShow");
-            x.style.display = "none";
+            x.style.display = "none";                                 
     }
 
     routeToFoodInfo() {
@@ -35,7 +37,7 @@ class Tab3 extends Component{
 
     onSearch() {
         var x = document.getElementById("foodListShow");
-              x.style.display = "block";
+              x.style.display = "block";       
     }
 
     handleCallback(FOODSAFE) {
@@ -61,6 +63,15 @@ class Tab3 extends Component{
         window.location.href = url;
     }
 
+    
+    countChangeUp() {
+        this.setState({count: this.state.count+1});
+    }
+    
+    countChangeDown() {
+        this.setState({count: this.state.count-1});
+    }
+
     render() {
 
         return(
@@ -83,8 +94,16 @@ class Tab3 extends Component{
                     <IonButton onClick={ this.routeToFoodInfo } class="moreInfoOnSearch">Help Me learn More!</IonButton>
                 </div>
 
-                <div className="ad" onClick={ this.adInfo }>
-                    <img src={petco} alt="petco"></img>
+                <div class="bottomRow">
+                    <div className="ad" onClick={ this.adInfo }>
+                        <img src={petco} alt="petco"></img>
+                    </div>
+
+                    <div class="votes">
+                        <button id="upvote" onClick={this.countChangeUp}>▲</button>                                                   
+                        <h3>{this.state.count} Votes!</h3>
+                        <button id="downvote" onClick={this.countChangeDown}>▼</button>   
+                    </div>
                 </div>
             </div>
         );
