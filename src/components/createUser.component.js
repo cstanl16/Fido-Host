@@ -131,6 +131,8 @@ class CreateUser extends Component {
                 console.log(res.data);
                 window.location = '/tab3';
             });
+        // remove afterwards
+        window.location = '/tab3';
     };
     
     render() {
