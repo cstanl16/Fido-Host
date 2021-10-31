@@ -42,21 +42,13 @@ export const Food = (props) => {
         ); 
     }
     else {
-        alert(1);
+        //alert(1);
         return(
             <div className="foodReturn">
                 <h1>help</h1>
             </div>
         );
     }
-
-    return(
-        <div className="foodReturn">
-            <h1>{props.food.foodSafe}!</h1>
-            <p>{x}</p>
-        </div>
-    );
-
 }
 
 export default class FoodList extends Component {
