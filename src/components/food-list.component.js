@@ -42,7 +42,7 @@ export const Food = (props) => {
         ); 
     }
     else {
-        //alert(1);
+        alert(1);
         return(
             <div className="foodReturn">
                 <h1>help</h1>
