@@ -54,9 +54,7 @@ class login extends Component {
     };
 
     onRouteToCreate() {
-        const url = 'https://fido-host-qqizf.ondigitalocean.app/newuser'
-        window.location.href = url;
-        
+        window.location = '/newUser';
     }
 
     findUser() {
