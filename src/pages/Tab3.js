@@ -37,13 +37,14 @@ class Tab3 extends Component{
 
     onSearch() {
         var x = document.getElementById("foodListShow");
-              x.style.display = "block";       
+              x.style.display = "block";    
+        this.setState({newKey: this.state.searchText}); 
     }
 
     handleCallback(FOODSAFE) {
         if (FOODSAFE === "Yes") {
-              var x = document.getElementById("main");
-              x.style.backgroundColor = "#5CDB95";
+            var x = document.getElementById("main");
+            x.style.backgroundColor = "#5CDB95";
         }
         else if (FOODSAFE === "No") {
             var y = document.getElementById("main");
@@ -83,9 +84,9 @@ class Tab3 extends Component{
                 <SearchBox Autocomplete className="here" value={this.state.searchText} handleChange={this.onChange} showCancelButton="never"/>
                 <button className="searchButton" value="search" onClick={ this.onSearch }>Search</button>
 
-
+            {/* change key */}
                 <div id="foodListShow" >
-                    <FoodList parentCallback = { this.handleCallback } key = { this.state.searchText } foodName = {this.state.searchText}/>
+                    <FoodList parentCallback = { this.handleCallback} key = {this.state.newKey }foodName = {this.state.searchText}/>
                 </div>
 
                {/*  <div id="foodNotFound">Not Found</div> */}

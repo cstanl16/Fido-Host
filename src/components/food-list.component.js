@@ -42,8 +42,12 @@ export const Food = (props) => {
         ); 
     }
     else {
-        console.log("We finally got here!!!");
-        x = "Please try clicking the help me learn more button!";
+        //alert(1);
+        return(
+            <div className="foodReturn">
+                <h1>help</h1>
+            </div>
+        );
     }
 
     return(
@@ -78,6 +82,7 @@ export default class FoodList extends Component {
 
 
     componentDidMount() {
+        console.log("restarted");
         axios.get('https://final-project-node-server-zron8.ondigitalocean.app/food') //username/'+this.props.username
         .then(response => {
             this.setState({ foodItems: response.data });
@@ -87,6 +92,7 @@ export default class FoodList extends Component {
         .catch((error) => {
             console.log(error);
         });
+
         
 
     }
@@ -103,18 +109,18 @@ export default class FoodList extends Component {
     filterFoodList() {  
         const name = this.props.foodName;
         this.setState({
-            foodItems: this.state.foodItems.filter(foodbudget => foodbudget.foodName === (`${name}`) )
-            
+            foodItems: this.state.foodItems.filter(foodItems => foodItems.foodName === (`${name}`) ) 
         });
+        
 
     }
 
     foodList() {
 
+        // FIX THIS FROM SHOWING YES AT FIRST RUN
         return this.state.foodItems.map(currentfood => {
-
             this.props.parentCallback(currentfood.foodSafe);
-            
+           
         return <Food  food={currentfood} deleteFood={this.deleteFood} key={currentfood._id}/>;
         });
     }
