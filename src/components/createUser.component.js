@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { Auth0Context } from '@auth0/auth0-react';
 
 class CreateUser extends Component {
 
@@ -7,36 +8,40 @@ class CreateUser extends Component {
         super(props);
 
         this.onChangeName = this.onChangeName.bind(this);
-        this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
-        this.onChangePassword2 = this.onChangePassword2.bind(this);
         this.onChangeDogType = this.onChangeDogType.bind(this);
         this.onChangeDogName = this.onChangeDogName.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            username: '', 
             name: '',
             email: '',
-            password: '',
-            password2: '',
             dogType: '',
             dogName: ''
         };
     };
 
-    onChangeName(e) {
+    componentDidMount() {
+        Axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user/', { params: { username: this.props.username } })
+            .then(response => {
+                this.setState({
+                    name: response.data[0].name,
+                    email: response.data[0].email,
+                    dogType: response.data[0].dogType,
+                    dogName: response.data[0].dogName
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+     onChangeName(e) {
         this.setState({
             name: e.target.value
         });
     };
 
-    onChangeUsername(e) {
-        this.setState({
-            username: e.target.value
-        });
-    };
 
     onChangeEmail(e) {
         this.setState({
@@ -44,60 +49,6 @@ class CreateUser extends Component {
         });
     };
 
-    onChangePassword(e) {
-        var updatedPassword = e.target.value;
-        
-        this.setState({
-            password: updatedPassword
-        });
- 
-        if (updatedPassword === this.state.password2) {
-
-            var a = document.getElementById("createUserSubmitButton");
-                a.className = "createUserButton";
-
-            var b = document.getElementById("testMatch");
-                b.className = "Match";
-
-        }
-        else if (updatedPassword !== this.state.password2) {
-
-            var c = document.getElementById("createUserSubmitButton");
-                c.className = "Disabled";
-
-            var d = document.getElementById("testMatch");
-                d.className = "noMatch";
-        } 
-
-    };
-
-    onChangePassword2(e) {
-        var updatedPassword2 = e.target.value;
-
-        this.setState({
-            password2: updatedPassword2
-        });
-
-        if (this.state.password === updatedPassword2) {
-
-            var a = document.getElementById("createUserSubmitButton");
-                a.className = "createUserButton";
-
-            var b = document.getElementById("testMatch");
-               b.className = "Match";
-
-        }
-        else if (this.state.password !== updatedPassword2) {
-
-            var c = document.getElementById("createUserSubmitButton");
-                c.className = "Disabled";
-
-            var d = document.getElementById("testMatch");
-               d.className = "noMatch";
-
-        } 
-
-    };
 
     onChangeDogType(e) {
         this.setState({
@@ -109,33 +60,43 @@ class CreateUser extends Component {
         this.setState({
             dogName: e.target.value
         });
-    };
+    }; 
 
     onSubmit(e) {
         e.preventDefault();
 
-        const user = {
+        const { user } = this.context;
+        const name = user.name;
+
+        const profile = {
             name: this.state.name,
-            username: this.state.username,
+            username: name,
             email: this.state.email,
-            password: this.state.password,
             dogType: this.state.dogType,
             dogName: this.state.dogName
 
         };
 
-        console.log(user);
+        console.log(profile);
 
-        Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/user/add', user)
+        Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/user/add', profile)
             .then(res => {
                 console.log(res.data);
-                window.location = '/tab3';
-            });
+                //window.location = '/tab3';
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
         // remove afterwards
-        window.location = '/tab3';
+        //window.location = '/tab3';
     };
+
+    static contextType = Auth0Context;
     
     render() {
+        const { user } = this.context;
+        const name = user.name; 
+
         return (
             <div className="createUserPage">
                 <h3 className="createUserH3">Create account</h3>
@@ -146,7 +107,7 @@ class CreateUser extends Component {
                     </div>
 
                     <div>
-                        <input type="text" placeholder="Username" className="createUserInput" value={this.state.username} onChange={this.onChangeUsername}/>
+                        <input type="text" placeholder={name} className="createUserInput" value={name} readOnly/>
                     </div>
 
                     <div>
@@ -154,23 +115,11 @@ class CreateUser extends Component {
                     </div>
 
                     <div>
-                            <input type="text" placeholder="password" className="createUserInput" selected={this.state.password} onChange={this.onChangePassword}/>
-                    </div>
-
-                    <div id="testMatch" className="Match">
-                        Passwords Must match!
+                            <input type="text" placeholder="Dog Type" className="createUserInput" value={this.state.dogType} onChange={this.onChangeDogType}/>
                     </div>
 
                     <div>
-                            <input type="text" placeholder="password" className="createUserInput" selected={this.state.password2} onChange={this.onChangePassword2}/>
-                    </div>
-
-                    <div>
-                            <input type="text" placeholder="Dog Type" className="createUserInput" selected={this.state.dogType} onChange={this.onChangeDogType}/>
-                    </div>
-
-                    <div>
-                            <input type="text" placeholder="Dog Name" className="createUserInput" selected={this.state.dogName} onChange={this.onChangeDogName}/>
+                            <input type="text" placeholder="Dog Name" className="createUserInput" value={this.state.dogName} onChange={this.onChangeDogName}/>
                     </div>
 
                     <div className="createUserButtonDiv">

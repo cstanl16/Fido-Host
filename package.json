@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@angular/cli": "^12.2.9",
+    "@auth0/auth0-react": "^1.8.0",
     "@capacitor/app": "1.0.3",
     "@capacitor/core": "^3.2.4",
     "@capacitor/haptics": "1.1.0",

@@ -1,15 +1,22 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,
-} from '@ionic/react';
 import React from 'react';
+
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { searchOutline, personOutline, createOutline } from 'ionicons/icons';
+
+import PrivateRoute from './components/PrivateRoute.js';
 import FoodList from './components/food-list.component.js';
 import CreateFood from './components/create-food.component.js';
 import LoginPage from './components/loginPage.component.js';
 import CreateUser from './components/createUser.component.js';
 import EditFood from './components/edit-food.component.js';
+import Loading from './components/Loading.js';
+import { useAuth0 } from '@auth0/auth0-react';
+
 import Tab3 from './pages/Tab3.js';
+import Profile from './pages/Profile.js';
+
 import './App.css';
 
 /* Core CSS required for Ionic components to work properly */
@@ -31,8 +38,14 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
+const App = () => {
+
+  const { isLoading } = useAuth0();
+    if (isLoading) {
+        return <Loading/>
+    }
+    return (
+      <IonApp>
     <IonReactRouter>
       <IonTabs>
 
@@ -65,6 +78,8 @@ const App: React.FC = () => (
             <Redirect to="/tab3" />
           </Route>
 
+          <PrivateRoute exact path = "/profile" component = { Profile } />
+
         </IonRouterOutlet>
 
 
@@ -74,20 +89,23 @@ const App: React.FC = () => (
             <IonLabel>Home</IonLabel>
           </IonTabButton>
 
-          <IonTabButton tab="login" href="/login">
+          <IonTabButton tab="profile" href="/profile">
             <IonIcon icon={personOutline} />
-            <IonLabel>Login</IonLabel>
+            <IonLabel>Profile</IonLabel>
           </IonTabButton>
 
-          <IonTabButton tab="create" href="/create">
+          <IonTabButton tab="profile" href="/profile">
             <IonIcon icon={createOutline} />
             <IonLabel>Create</IonLabel>
           </IonTabButton>
+
         </IonTabBar>
 
       </IonTabs>
     </IonReactRouter>
   </IonApp>
-);
+    )
+  
+}
 
 export default App;

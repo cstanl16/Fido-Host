@@ -3,6 +3,8 @@ import { IonButton } from '@ionic/react';
 import FoodList from '../components/food-list.component.js';
 import SearchBox from '../components/SearchBox.js';
 import petco from './petco.jpg';
+import LogoutButton from '../components/LogoutButton.js';
+import LoginButton from '../components/LoginButton.js';
 
 class Tab3 extends Component{
     constructor(props) {
@@ -20,13 +22,14 @@ class Tab3 extends Component{
             searchFood: '',
             foodSafe: '',
             count: 0,
+
         }
     }
 
     onChange(event) {
         this.setState({searchText: event.target.value});
         var x = document.getElementById("foodListShow");
-            x.style.display = "none";                                 
+           x.style.display = "none";                                 
     }
 
     routeToFoodInfo() {
@@ -37,8 +40,9 @@ class Tab3 extends Component{
 
     onSearch() {
         var x = document.getElementById("foodListShow");
-              x.style.display = "block";    
-        this.setState({newKey: this.state.searchText}); 
+              x.style.display = "block";   
+            this.setState({newKey: this.state.searchText}); 
+        
     }
 
     handleCallback(FOODSAFE) {
@@ -86,7 +90,7 @@ class Tab3 extends Component{
 
             {/* change key */}
                 <div id="foodListShow" >
-                    <FoodList parentCallback = { this.handleCallback} key = {this.state.newKey }foodName = {this.state.searchText}/>
+                    <FoodList parentCallback = { this.handleCallback} key = { this.state.newKey }foodName = {this.state.searchText}/>
                 </div>
 
                {/*  <div id="foodNotFound">Not Found</div> */}
@@ -106,6 +110,9 @@ class Tab3 extends Component{
                         <button id="downvote" onClick={this.countChangeDown}>▼</button>   
                     </div>
                 </div>
+                <LoginButton/>
+                <LogoutButton/>
+
             </div>
         );
 

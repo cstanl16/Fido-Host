@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export const Food = (props) => {
     
-    var x = '';
     if ((props.food.foodSafe === "Yes" && props.food.foodSafe === '') || (props.food.foodSafe === "no"  && props.food.foodSafe === '')) {
         return(
             <div className="foodReturn">
@@ -41,8 +40,8 @@ export const Food = (props) => {
             </div>
         ); 
     }
-    else {
-        //alert(1);
+    else if (props.food.foodSafe !== "No" || props.food.foodSafe !== "Yes") {
+        console.log("Hello");
         return(
             <div className="foodReturn">
                 <h1>help</h1>
@@ -85,8 +84,6 @@ export default class FoodList extends Component {
             console.log(error);
         });
 
-        
-
     }
 
     deleteFood(id) {
@@ -109,12 +106,18 @@ export default class FoodList extends Component {
 
     foodList() {
 
-        // FIX THIS FROM SHOWING YES AT FIRST RUN
-        return this.state.foodItems.map(currentfood => {
-            this.props.parentCallback(currentfood.foodSafe);
-           
-        return <Food  food={currentfood} deleteFood={this.deleteFood} key={currentfood._id}/>;
-        });
+        if (this.state.foodItems.map.length > 0) {
+            console.log(this.state.foodItems.map.length);
+            return this.state.foodItems.map(currentfood => {
+                this.props.parentCallback(currentfood.foodSafe);
+               
+            return <Food  food={currentfood} key={currentfood._id}/>;
+            });
+        }
+        else {
+            console.log("im here");
+        }
+        
     }
 
 }
