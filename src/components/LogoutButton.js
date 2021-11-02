@@ -7,9 +7,6 @@ const LogoutButton = () => {
     return (
         <button
             onClick={() => logout()}
-            id="qsLoginBtn"
-            variant="primary"
-            className="loginButton"
             >
                 Log Out
         </button>

@@ -25,10 +25,10 @@ class CreateUser extends Component {
         Axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user/', { params: { username: this.props.username } })
             .then(response => {
                 this.setState({
-                    name: response.data[0].name,
-                    email: response.data[0].email,
-                    dogType: response.data[0].dogType,
-                    dogName: response.data[0].dogName
+                    name: response.data.name,
+                    email: response.data.email,
+                    dogType: response.data.dogType,
+                    dogName: response.data.dogName
                 })
             })
             .catch(function (error) {

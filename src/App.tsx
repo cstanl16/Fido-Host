@@ -46,64 +46,64 @@ const App = () => {
     }
     return (
       <IonApp>
-    <IonReactRouter>
-      <IonTabs>
+        <IonReactRouter>
+          <IonTabs>
 
-        <IonRouterOutlet>
-          <Route exact path="/tab3">
-            <Tab3 />
-          </Route>
+            <IonRouterOutlet>
+              <Route exact path="/tab3">
+                <Tab3 />
+              </Route>
 
-          <Route exact path="/foodList">
-            <FoodList/>
-          </Route>
+              <Route exact path="/foodList">
+                <FoodList/>
+              </Route>
 
-          <Route exact path="/create">
-            <CreateFood/>
-          </Route>
+              <Route exact path="/create">
+                <CreateFood/>
+              </Route>
 
-          <Route exact path="/newUser">
-            <CreateUser/>
-          </Route>
+              <Route exact path="/newUser">
+                <CreateUser/>
+              </Route>
 
-          <Route exact path="/login">
-            <LoginPage/>
-          </Route>
+              <Route exact path="/login">
+                <LoginPage/>
+              </Route>
 
-          <Route path ="/edit/:id">
-            <EditFood/>
-          </Route>
+              <Route path ="/edit/:id">
+                <EditFood/>
+              </Route>
 
-          <Route exact path="/">
-            <Redirect to="/tab3" />
-          </Route>
+              <Route exact path="/">
+                <Redirect to="/tab3" />
+              </Route>
 
-          <PrivateRoute exact path = "/profile" component = { Profile } />
+              <PrivateRoute exact path = "/profile" component = { Profile } />
 
-        </IonRouterOutlet>
+            </IonRouterOutlet>
 
 
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={searchOutline} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
+            <IonTabBar slot="bottom">
+              <IonTabButton tab="tab3" href="/tab3">
+                <IonIcon icon={searchOutline} />
+                <IonLabel>Home</IonLabel>
+              </IonTabButton>
 
-          <IonTabButton tab="profile" href="/profile">
-            <IonIcon icon={personOutline} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
+              <IonTabButton tab="profile" href="/profile">
+                <IonIcon icon={personOutline} />
+                <IonLabel>Profile</IonLabel>
+              </IonTabButton>
 
-          <IonTabButton tab="profile" href="/profile">
-            <IonIcon icon={createOutline} />
-            <IonLabel>Create</IonLabel>
-          </IonTabButton>
+              {/* <IonTabButton tab="profile" href="/profile">
+                <IonIcon icon={createOutline} />
+                <IonLabel>Create</IonLabel>
+              </IonTabButton> */}
 
-        </IonTabBar>
+            </IonTabBar>
 
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
+          </IonTabs>
+        </IonReactRouter>
+      </IonApp>
     )
   
 }
