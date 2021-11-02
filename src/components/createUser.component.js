@@ -22,8 +22,9 @@ class CreateUser extends Component {
     };
 
     componentDidMount() {
-        Axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user/', { params: { username: this.props.username } })
+        Axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user/' + this.props.username)
             .then(response => {
+                console.log(response);
                 this.setState({
                     name: response.data.name,
                     email: response.data.email,
