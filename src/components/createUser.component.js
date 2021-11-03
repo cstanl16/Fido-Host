@@ -35,7 +35,7 @@ class CreateUser extends Component {
                     const newUser = {
                         username: x
                     };
-
+                    //Axios.post('http://localhost:8080/user/add', newUser)
                     Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/user/add', newUser)
                         .then(response => {
                             console.log(response)
