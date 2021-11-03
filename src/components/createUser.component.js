@@ -20,8 +20,8 @@ class CreateUser extends Component {
 
     async componentDidMount() {
         let x = this.props.username;
-        //Axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user/' + this.props.username)
-        await Axios.get('http://localhost:8080/user/' + this.props.username)
+        await Axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user/' + x)
+        //await Axios.get('http://localhost:8080/user/' + this.props.username)
             .then(response => {
                 this.setState({
                     name: response.data.name,
@@ -36,7 +36,7 @@ class CreateUser extends Component {
                         username: x
                     };
 
-                    Axios.post('http://localhost:8080/user/add', newUser)
+                    Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/add', newUser)
                         .then(response => {
                             console.log(response)
                         })
