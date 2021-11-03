@@ -80,16 +80,16 @@ const App = () => {
                 <EditFood/>
               </Route>
 
-              <Route path ="/editProfile">
-                <EditProfilePage/>
-              </Route>
+              <PrivateRoute path ="/editProfile" component = { EditProfilePage }/>
+
+              <PrivateRoute exact path = "/profile" component = { Profile } />
 
               <Route exact path="/">
                 <Redirect to="/tab3" />
               </Route>
               
 
-              <PrivateRoute exact path = "/profile" component = { Profile } />
+              
 
             </IonRouterOutlet>
 
