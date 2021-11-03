@@ -110,8 +110,6 @@ class Tab3 extends Component{
                         <button id="downvote" onClick={this.countChangeDown}>▼</button>   
                     </div>
                 </div>
-                <LoginButton/>
-                <LogoutButton/>
 
             </div>
         );

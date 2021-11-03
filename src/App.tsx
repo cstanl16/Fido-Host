@@ -16,6 +16,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import Tab3 from './pages/Tab3.js';
 import Profile from './pages/Profile.js';
+import Review from './pages/ReviewPage.js';
+import { EditProfilePage } from './pages/EditProfile.js';
 
 import './App.css';
 
@@ -66,6 +68,10 @@ const App = () => {
                 <CreateUser/>
               </Route>
 
+              <Route exact path="/review">
+                <Review/>
+              </Route>
+
               <Route exact path="/login">
                 <LoginPage/>
               </Route>
@@ -74,9 +80,14 @@ const App = () => {
                 <EditFood/>
               </Route>
 
+              <Route path ="/editProfile">
+                <EditProfilePage/>
+              </Route>
+
               <Route exact path="/">
                 <Redirect to="/tab3" />
               </Route>
+              
 
               <PrivateRoute exact path = "/profile" component = { Profile } />
 

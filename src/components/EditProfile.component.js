@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { Auth0Context } from '@auth0/auth0-react';
-import LogoutButton from './LogoutButton';
 
-class CreateUser extends Component {
+class EditProfile extends Component {
 
     constructor(props) {
         super(props);
@@ -24,7 +23,6 @@ class CreateUser extends Component {
 
     componentDidMount() {
         Axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user/' + this.props.username)
-        //Axios.get('http://localhost:8080/user/' + this.props.username)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -68,10 +66,34 @@ class CreateUser extends Component {
         });
     }; 
 
-    onSubmit() {
-        console.log("herex2")
-        
-        window.location = '/editProfile';
+    onSubmit(e) {
+        e.preventDefault();
+
+        const { user } = this.context;
+        const name = user.name;
+
+        const profile = {
+            name: this.state.name,
+            username: name,
+            email: this.state.email,
+            dogType: this.state.dogType,
+            dogName: this.state.dogName
+
+        };
+
+        console.log(profile);
+
+        Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/user/update/' + this.props.username, profile)
+        //Axios.post('http://localhost:8080/user/update/' + this.props.username, profile)
+            .then(res => {
+                console.log(res.data);
+                window.location = '/tab3';
+            })
+            .catch(function (error) {
+                alert(error);
+            })
+        // remove afterwards
+        //window.location = '/tab3';
     };
 
     static contextType = Auth0Context;
@@ -83,6 +105,7 @@ class CreateUser extends Component {
         return (
             <div className="createUserPage">
                 <h3 className="createUserH3">Create account</h3>
+                <form className="createUserForm" onSubmit={this.onSubmit}>
 
                     <div className="">
                         <input type="text" placeholder="Full Name" className="createUserInput" value={this.state.name} onChange={this.onChangeName}/>
@@ -105,16 +128,13 @@ class CreateUser extends Component {
                     </div>
 
                     <div className="createUserButtonDiv">
-                        <button id="createUserSubmitButton" className="createUserButton" onClick={this.onSubmit}>Edit Account </button>
-                    </div>
-
-                    <div className="createUserButtonDiv">
-                        <LogoutButton className="createUserButton"/>
+                        <button id="createUserSubmitButton" className="createUserButton" onSubmit={this.onSubmit}>done! </button>
                     </div>
                     
+                </form>
             </div>
         );
     };
 };
 
-export default (CreateUser);
+export default (EditProfile);
