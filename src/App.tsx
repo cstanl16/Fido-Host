@@ -1,9 +1,10 @@
 import { Redirect, Route } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { searchOutline, personOutline, createOutline } from 'ionicons/icons';
+import { Browser } from "@capacitor/browser";
 
 import PrivateRoute from './components/PrivateRoute.js';
 import FoodList from './components/food-list.component.js';
@@ -13,8 +14,11 @@ import CreateUser from './components/createUser.component.js';
 import EditFood from './components/edit-food.component.js';
 import Loading from './components/Loading.js';
 import { useAuth0 } from '@auth0/auth0-react';
+import { callbackUri } from "./auth.config";
+import { App as CapApp } from "@capacitor/app";
 
 import Tab3 from './pages/Tab3.js';
+import Tab3_cat from './pages/Tab3_cat.js';
 import Profile from './pages/Profile.js';
 import Review from './pages/ReviewPage.js';
 import { EditProfilePage } from './pages/EditProfile.js';
@@ -40,12 +44,24 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App = () => {
+const App: React.FC = () => {
 
-  const { isLoading } = useAuth0();
-    if (isLoading) {
-        return <Loading/>
-    }
+  const { handleRedirectCallback } = useAuth0();
+
+  useEffect(() => {
+    CapApp.addListener("appUrlOpen", async ({ url }) => {
+      if (url.startsWith(callbackUri)) {
+        if (
+          url.includes("state") &&
+          (url.includes("code") || url.includes("error"))
+        ) {
+          await handleRedirectCallback(url);
+        }
+
+        await Browser.close();
+      }
+    });
+  }, [handleRedirectCallback]);
     return (
       <IonApp>
         <IonReactRouter>
@@ -54,6 +70,10 @@ const App = () => {
             <IonRouterOutlet>
               <Route exact path="/tab3">
                 <Tab3 />
+              </Route>
+
+              <Route exact path="/tab3_cat">
+                <Tab3_cat />
               </Route>
 
               <Route exact path="/foodList">
@@ -88,7 +108,9 @@ const App = () => {
                 <Redirect to="/tab3" />
               </Route>
               
-
+              <Route exact path="/cat">
+                <Redirect to="/tab3_cat" />
+              </Route>
               
 
             </IonRouterOutlet>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { IonButton } from '@ionic/react';
-import FoodList from '../components/food-list.component.js';
+import FoodList from '../components/food-list-cat.component.js';
 import SearchBox from '../components/SearchBox.js';
 import petco from './petco.jpg';
 import LogoutButton from '../components/LogoutButton.js';
 import LoginButton from '../components/LoginButton.tsx';
 
-class Tab3 extends Component{
+class Tab3_cat extends Component{
     constructor(props) {
         super(props);
 
@@ -120,4 +120,4 @@ class Tab3 extends Component{
 
 }
 
-export default Tab3;
+export default Tab3_cat;
