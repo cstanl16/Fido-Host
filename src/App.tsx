@@ -18,7 +18,6 @@ import { callbackUri } from "./auth.config";
 import { App as CapApp } from "@capacitor/app";
 
 import Tab3 from './pages/Tab3.js';
-import Tab3_cat from './pages/Tab3_cat.js';
 import Profile from './pages/Profile.js';
 import Review from './pages/ReviewPage.js';
 import { EditProfilePage } from './pages/EditProfile.js';
@@ -72,9 +71,6 @@ const App: React.FC = () => {
                 <Tab3 />
               </Route>
 
-              <Route exact path="/tab3_cat">
-                <Tab3_cat />
-              </Route>
 
               <Route exact path="/foodList">
                 <FoodList/>
@@ -108,9 +104,6 @@ const App: React.FC = () => {
                 <Redirect to="/tab3" />
               </Route>
               
-              <Route exact path="/cat">
-                <Redirect to="/tab3_cat" />
-              </Route>
               
 
             </IonRouterOutlet>
