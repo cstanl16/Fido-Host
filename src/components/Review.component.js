@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import {FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import {FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 class Review extends Component {
@@ -154,11 +154,11 @@ class Review extends Component {
                 This is the rating page {this.state.username}
 
                 <div className="stars">
-                    <button id="star1" onClick={this.onClick1}><FontAwesomeIcon icon={faStar}/></button>
-                    <button id="star2" onClick={this.onClick2}><FontAwesomeIcon icon={faStar}/></button>
-                    <button id="star3" onClick={this.onClick3}><FontAwesomeIcon icon={faStar}/></button>
-                    <button id="star4" onClick={this.onClick4}><FontAwesomeIcon icon={faStar}/></button>
-                    <button id="star5" onClick={this.onClick5}><FontAwesomeIcon icon={faStar}/></button>
+                    <button id="star1" onClick={this.onClick1}>0</button>
+                    <button id="star2" onClick={this.onClick2}>0</button>
+                    <button id="star3" onClick={this.onClick3}>0</button>
+                    <button id="star4" onClick={this.onClick4}>0</button>
+                    <button id="star5" onClick={this.onClick5}>0</button>
                 </div>
 
                 <div className="reviewComments">
