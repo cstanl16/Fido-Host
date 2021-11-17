@@ -3,8 +3,6 @@ import { IonButton } from '@ionic/react';
 import FoodList from '../components/food-list.component.js';
 import SearchBox from '../components/SearchBox.js';
 import petco from './petco.jpg';
-import LogoutButton from '../components/LogoutButton.js';
-import LoginButton from '../components/LoginButton.js';
 
 class Tab3 extends Component{
     constructor(props) {

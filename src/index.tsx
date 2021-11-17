@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Auth0ProviderWithHistory from "./auth0-provider-with-history";
 
-const domain = 'process.env.REACT_APP_AUTH0_DOMAIN';
-const clientId = 'process.env.REACT_APP_AUTH0_CLIENT_ID';
-
 ReactDOM.render(
   <React.StrictMode>
     <Auth0ProviderWithHistory>

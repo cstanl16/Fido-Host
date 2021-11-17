@@ -1,9 +1,9 @@
 import { Redirect, Route } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { searchOutline, personOutline, createOutline } from 'ionicons/icons';
+import { searchOutline, personOutline} from 'ionicons/icons';
 
 import PrivateRoute from './components/PrivateRoute.js';
 import FoodList from './components/food-list.component.js';
@@ -68,8 +68,7 @@ const App = () => {
                 <CreateUser/>
               </Route>
 
-              <PrivateRoute exact path="/review" component = {Review}>
-              </PrivateRoute>
+              <PrivateRoute exact path="/review" component = {Review}/>
 
               <Route exact path="/login">
                 <LoginPage/>
