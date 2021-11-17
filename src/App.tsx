@@ -68,9 +68,8 @@ const App = () => {
                 <CreateUser/>
               </Route>
 
-              <Route exact path="/review">
-                <Review/>
-              </Route>
+              <PrivateRoute exact path="/review" component = {Review}>
+              </PrivateRoute>
 
               <Route exact path="/login">
                 <LoginPage/>

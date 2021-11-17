@@ -83,6 +83,7 @@ export default class FoodList extends Component {
         .then(response => {
             this.setState({ foodItems: response.data });
             //console.log({ foodItems: response.data }); uncomment to see all entries of db in console
+            this.filterFoodList();
             this.testFunction();
         })
         .catch((error) => {
@@ -97,28 +98,25 @@ export default class FoodList extends Component {
 
     testFunction() {
 
-        if (this.context !== null) {
-
-            const { user } = this.context;
-            const name = user.name;
-            console.log(name);
+        const { user } = this.context;
+        const name = user.name;
+        console.log(name);
+        if (name !== null) {
+            
             axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user/' + name ) 
             .then(response => {
-                //console.log(response)
                 this.setState({ dogName: response.data.dogName });
-                this.filterFoodList();
             })
             .catch((error) => {
                 console.log(error);
             });
         }
         else {
-            this.filterFoodList();
         }
 
     }
 
-    // 2 filter through the food list by the name sent in from the searech bar
+    // 2 filter through the food list by the name sent in from the search bar
 
     filterFoodList() {  
         const name = this.props.foodName;
