@@ -3,10 +3,8 @@ import { IonButton } from '@ionic/react';
 import FoodList from '../components/food-list-cat.component.js';
 import SearchBox from '../components/SearchBox.js';
 import petco from './petco.jpg';
-import LogoutButton from '../components/LogoutButton.js';
-import LoginButton from '../components/LoginButton.tsx';
 
-class Tab3_cat extends Component{
+class Cat extends Component{
     constructor(props) {
         super(props);
 
@@ -111,7 +109,6 @@ class Tab3_cat extends Component{
                     </div>
                 </div>
 
-                <LoginButton>hey!</LoginButton>
             </div>
         );
 
@@ -120,4 +117,4 @@ class Tab3_cat extends Component{
 
 }
 
-export default Tab3_cat;
+export default Cat;

@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { searchOutline, personOutline, createOutline } from 'ionicons/icons';
-import { Browser } from "@capacitor/browser";
 
 import PrivateRoute from './components/PrivateRoute.js';
 import FoodList from './components/food-list.component.js';
@@ -12,12 +11,9 @@ import CreateFood from './components/create-food.component.js';
 import LoginPage from './components/loginPage.component.js';
 import CreateUser from './components/createUser.component.js';
 import EditFood from './components/edit-food.component.js';
-import Loading from './components/Loading.js';
-import { useAuth0 } from '@auth0/auth0-react';
-import { callbackUri } from "./auth.config";
-import { App as CapApp } from "@capacitor/app";
 
 import Tab3 from './pages/Tab3.js';
+import Cat from './pages/Cat.js';
 import Profile from './pages/Profile.js';
 import Review from './pages/ReviewPage.js';
 import { EditProfilePage } from './pages/EditProfile.js';
@@ -43,24 +39,8 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => {
+const App = () => {
 
-  const { handleRedirectCallback } = useAuth0();
-
-  useEffect(() => {
-    CapApp.addListener("appUrlOpen", async ({ url }) => {
-      if (url.startsWith(callbackUri)) {
-        if (
-          url.includes("state") &&
-          (url.includes("code") || url.includes("error"))
-        ) {
-          await handleRedirectCallback(url);
-        }
-
-        await Browser.close();
-      }
-    });
-  }, [handleRedirectCallback]);
     return (
       <IonApp>
         <IonReactRouter>
@@ -69,6 +49,10 @@ const App: React.FC = () => {
             <IonRouterOutlet>
               <Route exact path="/tab3">
                 <Tab3 />
+              </Route>
+
+              <Route exact path="/cat">
+                <Cat />
               </Route>
 
 

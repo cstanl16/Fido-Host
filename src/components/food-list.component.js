@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Auth0Context } from '@auth0/auth0-react';
+
+ // 7 food is exported after if statement to see what it should return
 
 export const Food = (props) => {
     
@@ -7,7 +10,7 @@ export const Food = (props) => {
         return(
             <div className="foodReturn">
                 <h1>Yes!</h1>
-                <p>Dogs can eat {props.food.foodName}</p>
+                <p>{props.dogName} can eat {props.food.foodName}</p>
             </div>
         );
     }
@@ -16,7 +19,7 @@ export const Food = (props) => {
         return(
             <div className="foodReturn">
                 <h1>Yes!</h1>
-                <p>Dogs can eat {props.food.foodName}</p>
+                <p>{props.dogName} can eat {props.food.foodName}</p>
                 <p>{props.food.foodNotes}</p>
             </div>
         );
@@ -26,7 +29,7 @@ export const Food = (props) => {
         return(
             <div className="foodReturn">
                 <h1>No!</h1>
-                <p>Dogs can't eat {props.food.foodName}</p>
+                <p>{props.dogName} can't eat {props.food.foodName}</p>
             </div>
         ); 
     }
@@ -35,13 +38,12 @@ export const Food = (props) => {
         return(
             <div className="foodReturn">
                 <h1>No!</h1>
-                <p>Dogs can't eat {props.food.foodName},</p>
+                <p>{props.dogName} can't eat {props.food.foodName},</p>
                 <p>{props.food.foodNotes}</p>
             </div>
         ); 
     }
     else if (props.food.foodSafe !== "No" || props.food.foodSafe !== "Yes") {
-        console.log("Hello");
         return(
             <div className="foodReturn">
                 <h1>help</h1>
@@ -55,12 +57,14 @@ export default class FoodList extends Component {
     constructor(props) {
         super(props);
 
-        this.deleteFood = this.deleteFood.bind(this);
         this.foodSafe = '';
         this.state = {
-            foodItems: []
+            foodItems: [],
+            dogName: 'Dogs'
         };
     }
+
+    // 3 start the render of the actual screen and call the foodlist function to be displayed
 
     render() {
         return (
@@ -72,28 +76,49 @@ export default class FoodList extends Component {
     }
 
 
+    // 1 make a call to database to get all foods at start of call
+
     componentDidMount() {
-        console.log("restarted");
-        axios.get('https://final-project-node-server-zron8.ondigitalocean.app/food') //username/'+this.props.username
+        axios.get('https://final-project-node-server-zron8.ondigitalocean.app/food') 
         .then(response => {
             this.setState({ foodItems: response.data });
             //console.log({ foodItems: response.data }); uncomment to see all entries of db in console
-            this.filterFoodList();
+            this.testFunction();
         })
         .catch((error) => {
             console.log(error);
         });
+        
+        
 
     }
 
-    deleteFood(id) {
-        axios.delete('https://final-project-node-server-zron8.ondigitalocean.app/food'+id)
-        .then(response => { 
-            console.log(response.data);
-            window.location = '/tab3';
-        }); 
+    static contextType = Auth0Context;
+
+    testFunction() {
+
+        if (this.context !== null) {
+
+            const { user } = this.context;
+            const name = user.name;
+            console.log(name);
+            axios.get('https://final-project-node-server-zron8.ondigitalocean.app/user/' + name ) 
+            .then(response => {
+                //console.log(response)
+                this.setState({ dogName: response.data.dogName });
+                this.filterFoodList();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+        else {
+            this.filterFoodList();
+        }
+
     }
 
+    // 2 filter through the food list by the name sent in from the searech bar
 
     filterFoodList() {  
         const name = this.props.foodName;
@@ -104,14 +129,19 @@ export default class FoodList extends Component {
 
     }
 
+    // 4 takes 
+
     foodList() {
 
         if (this.state.foodItems.map.length > 0) {
             console.log(this.state.foodItems.map.length);
             return this.state.foodItems.map(currentfood => {
+
+                // 5 callback to send yes or no to tab3 page to show green/red
                 this.props.parentCallback(currentfood.foodSafe);
                
-            return <Food  food={currentfood} key={currentfood._id}/>;
+                // 6 returns the food export
+            return <Food  dogName={this.state.dogName} food={currentfood} key={currentfood._id}/>;
             });
         }
         else {
