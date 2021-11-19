@@ -127,13 +127,17 @@ class Review extends Component {
             
         };
 
-        console.log(review)
+        console.log(review);
+        var x = document.querySelector(".interior");
+            x.style.display = "none";
+        var y = document.querySelector(".postSubmit");
+            y.style.display = "block";
 
         Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/review/add', review)
         //Axios.post('http://localhost:8080/review/add', review)
             .then(res => {
                 console.log(res.data);
-                window.location = '/tab3';
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -148,19 +152,23 @@ class Review extends Component {
         return (
             
             <div className="ratingPage">
+                <div className="interior"> 
+                    <div className="stars">
+                        <button id="star1" onClick={this.onClick1}>★</button>
+                        <button id="star2" onClick={this.onClick2}>★</button>
+                        <button id="star3" onClick={this.onClick3}>★</button>
+                        <button id="star4" onClick={this.onClick4}>★</button>
+                        <button id="star5" onClick={this.onClick5}>★</button>
+                    </div>
 
-                <div className="stars">
-                    <button id="star1" onClick={this.onClick1}>★</button>
-                    <button id="star2" onClick={this.onClick2}>★</button>
-                    <button id="star3" onClick={this.onClick3}>★</button>
-                    <button id="star4" onClick={this.onClick4}>★</button>
-                    <button id="star5" onClick={this.onClick5}>★</button>
+                    <input type="text" className="reviewComments" placeholder="Comments" value={this.state.comments} onChange={this.onChangeComments}/>
+
+                    <div className="submitButton">
+                        <button onClick={this.onSubmit}>Submit</button>
+                    </div>
                 </div>
-
-                <input type="text" className="reviewComments" placeholder="Comments" value={this.state.comments} onChange={this.onChangeComments}/>
-
-                <div className="submitButton">
-                    <button onClick={this.onSubmit}>Submit</button>
+                <div className="postSubmit">
+                    <p> Thank you for your feedback!</p>
                 </div>
                 
 
