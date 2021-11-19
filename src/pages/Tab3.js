@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { IonButton } from '@ionic/react';
 import FoodList from '../components/food-list.component.js';
+//import ReviewPage from './ReviewPage';
+import ReviewPage from '../components/Review.component';
 import SearchBox from '../components/SearchBox.js';
 import petco from './petco.jpg';
 
@@ -9,6 +11,7 @@ class Tab3 extends Component{
         super(props);
 
         this.countChangeUp = this.countChangeUp.bind(this);
+        this.closeReview = this.closeReview.bind(this);
         this.countChangeDown = this.countChangeDown.bind(this);
         this.onChange = this.onChange.bind(this);
         this.handleCallback = this.handleCallback.bind(this);
@@ -23,6 +26,12 @@ class Tab3 extends Component{
 
         }
     }
+
+    componentDidMount() {
+        //var x = document.getElementById("popup");
+        //    x.style.display = "none";
+    }
+
 
     onChange(event) {
         this.setState({searchText: event.target.value});
@@ -62,8 +71,13 @@ class Tab3 extends Component{
     }
 
     adInfo() {
-        const url = `https://www.petco.com`
-        window.location.href = url;
+        var x = document.querySelector(".popup");
+            x.style.display = "block";
+    }
+
+    closeReview() {
+        var x = document.querySelector(".popup");
+            x.style.display = "none";
     }
 
     
@@ -79,34 +93,36 @@ class Tab3 extends Component{
 
         return(
             <div id="main" style={{paddingBottom: "736px"}}>
-                <h1 className="homePageTitle">
-                    What Can Fido Eat?
-                </h1>
+                <div className="tab3">
+                    <h1 className="homePageTitle">
+                        What Can Fido Eat?
+                    </h1>
 
-                <SearchBox Autocomplete className="here" value={this.state.searchText} handleChange={this.onChange} showCancelButton="never"/>
-                <button className="searchButton" value="search" onClick={ this.onSearch }>Search</button>
+                    <SearchBox Autocomplete className="here" value={this.state.searchText} handleChange={this.onChange} showCancelButton="never"/>
+                    <button className="searchButton" value="search" onClick={ this.onSearch }>Search</button>
 
-            {/* change key */}
-                <div id="foodListShow" >
-                    <FoodList parentCallback = { this.handleCallback} key = { this.state.newKey }foodName = {this.state.searchText}/>
-                </div>
-
-               {/*  <div id="foodNotFound">Not Found</div> */}
-
-                <div className="learnMore">
-                    <IonButton onClick={ this.routeToFoodInfo } class="moreInfoOnSearch">Help Me learn More!</IonButton>
-                </div>
-
-                <div class="bottomRow">
-                    <div className="ad" onClick={ this.adInfo }>
-                        <img src={petco} alt="petco"></img>
+                    {/* change key */}
+                    <div id="foodListShow" >
+                        <FoodList parentCallback = { this.handleCallback} key = { this.state.newKey }foodName = {this.state.searchText}/>
                     </div>
 
-                    <div class="votes">
-                        <button id="upvote" onClick={this.countChangeUp}>▲</button>                                                   
-                        <h3>{this.state.count} Votes!</h3>
-                        <button id="downvote" onClick={this.countChangeDown}>▼</button>   
+                    {/*  <div id="foodNotFound">Not Found</div> */}
+
+                    <div className="learnMore">
+                        <IonButton onClick={ this.routeToFoodInfo } class="moreInfoOnSearch">Help Me learn More!</IonButton>
                     </div>
+
+                    <div class="bottomRow">
+                        <div className="ad" onClick = {this.adInfo}>
+                            <img src={petco} alt="petco" ></img>
+                        </div>
+                    </div>
+
+                    <div id="popup" className="popup">
+                        <button onClick = {this.closeReview}>Close</button>
+                        <ReviewPage/>
+                    </div>
+                    
                 </div>
 
             </div>

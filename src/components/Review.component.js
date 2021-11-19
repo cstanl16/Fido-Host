@@ -47,10 +47,10 @@ class Review extends Component {
         var star4 = document.getElementById("star4");
         var star5 = document.getElementById("star5");
         star1.style.color = "Yellow";
-        star2.style.color = "White";
-        star3.style.color = "White";
-        star4.style.color = "White";
-        star5.style.color = "white";
+        star2.style.color = "black";
+        star3.style.color = "black";
+        star4.style.color = "black";
+        star5.style.color = "black";
     };
 
     onClick2() {
@@ -64,9 +64,9 @@ class Review extends Component {
         var star5 = document.getElementById("star5");
         star1.style.color = "Yellow";
         star2.style.color = "Yellow";
-        star3.style.color = "White";
-        star4.style.color = "White";
-        star5.style.color = "white";
+        star3.style.color = "black";
+        star4.style.color = "black";
+        star5.style.color = "black";
     };
 
     onClick3() {
@@ -81,8 +81,8 @@ class Review extends Component {
         star1.style.color = "Yellow";
         star2.style.color = "Yellow";
         star3.style.color = "Yellow";
-        star4.style.color = "White";
-        star5.style.color = "white";
+        star4.style.color = "black";
+        star5.style.color = "black";
     };
 
     onClick4() {
@@ -98,7 +98,7 @@ class Review extends Component {
         star2.style.color = "Yellow";
         star3.style.color = "Yellow";
         star4.style.color = "Yellow";
-        star5.style.color = "white";
+        star5.style.color = "black";
     };
 
     onClick5() {
@@ -151,25 +151,21 @@ class Review extends Component {
             
             <div className="ratingPage">
 
-                This is the rating page {this.state.username}
-
                 <div className="stars">
-                    <button id="star1" onClick={this.onClick1}>0</button>
-                    <button id="star2" onClick={this.onClick2}>0</button>
-                    <button id="star3" onClick={this.onClick3}>0</button>
-                    <button id="star4" onClick={this.onClick4}>0</button>
-                    <button id="star5" onClick={this.onClick5}>0</button>
+                    <button id="star1" onClick={this.onClick1}>★</button>
+                    <button id="star2" onClick={this.onClick2}>★</button>
+                    <button id="star3" onClick={this.onClick3}>★</button>
+                    <button id="star4" onClick={this.onClick4}>★</button>
+                    <button id="star5" onClick={this.onClick5}>★</button>
                 </div>
 
-                <div className="reviewComments">
-                    <input type="text" placeholder="Comments" value={this.state.comments} onChange={this.onChangeComments}/>
-                </div>
+                <input type="text" className="reviewComments" placeholder="Comments" value={this.state.comments} onChange={this.onChangeComments}/>
 
                 <div className="submitButton">
                     <button onClick={this.onSubmit}>Submit</button>
                 </div>
-
                 
+
             </div>
         );
     };
