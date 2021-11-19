@@ -96,12 +96,12 @@ class CreateUser extends Component {
                         <p className="createUserInput">{this.state.rating[0]}</p>
                         <p className="createUserInput">{this.state.comments[0]}</p>
                    </div>
-                    <div className="reviewPost">
+                    {/* <div className="reviewPost">
                         <p className="createUserInput">{this.state.reviewerUsername[1]}</p>
                         <p className="createUserInput">{this.state.adID[1]}</p>
                         <p className="createUserInput">{this.state.rating[1]}</p>
                         <p className="createUserInput">{this.state.comments[1]}</p>
-                    </div> 
+                    </div>  */}
 
                     <div className="createUserButtonDiv">
                         <button id="createUserSubmitButton" className="createUserButton" onClick={this.onSubmit}>Edit Account </button>
