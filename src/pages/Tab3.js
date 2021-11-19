@@ -48,7 +48,7 @@ class Tab3 extends Component{
     onSearch() {
         var x = document.getElementById("foodListShow");
               x.style.display = "block";   
-            this.setState({newKey: this.state.searchText}); 
+        this.setState({newKey: this.state.searchText}); 
         
     }
 
@@ -70,9 +70,14 @@ class Tab3 extends Component{
         return ;
     }
 
-    adInfo() {
+    adReview() {
         var x = document.querySelector(".popup");
             x.style.display = "block";
+    }
+
+    adInfo() {
+        const url = "https://www.petco.com"
+        window.open(url, '_blank');
     }
 
     closeReview() {
@@ -92,7 +97,7 @@ class Tab3 extends Component{
     render() {
 
         return(
-            <div id="main" style={{paddingBottom: "736px"}}>
+            <div id="main" className="tab3Page">
                 <div className="tab3">
                     <h1 className="homePageTitle">
                         What Can Fido Eat?
@@ -113,8 +118,9 @@ class Tab3 extends Component{
                     </div>
 
                     <div class="bottomRow">
-                        <div className="ad" onClick = {this.adInfo}>
-                            <img src={petco} alt="petco" ></img>
+                        <div className="ad">
+                            <img src={petco} alt="petco" onClick = {this.adInfo}></img>
+                            <button className="reviewButton" onClick = {this.adReview}>Review Here</button>
                         </div>
                     </div>
 

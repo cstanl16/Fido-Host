@@ -56,7 +56,8 @@ class CreateFood extends Component {
 
         console.log(food);
 
-        Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/food/add', food)
+        //Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/food/add', food)
+        Axios.post('http://localhost:8080/food/add', food)
             .then(res => {
                 console.log(res.data);
                 window.location = '/tab3';
