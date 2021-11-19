@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-//import {FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 class Review extends Component {
 

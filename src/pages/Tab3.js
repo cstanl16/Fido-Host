@@ -34,7 +34,9 @@ class Tab3 extends Component{
 
 
     onChange(event) {
-        this.setState({searchText: event.target.value});
+        var temp = event.target.value;
+        temp = temp.substring(0, 1).toUpperCase() + temp.substring(1);
+        this.setState({searchText: temp});
         var x = document.getElementById("foodListShow");
            x.style.display = "none";                                 
     }
@@ -103,7 +105,7 @@ class Tab3 extends Component{
                         What Can Fido Eat?
                     </h1>
 
-                    <SearchBox Autocomplete className="here" value={this.state.searchText} handleChange={this.onChange} showCancelButton="never"/>
+                    <SearchBox className="here" value={this.state.searchText} handleChange={this.onChange} showCancelButton="never"/>
                     <button className="searchButton" value="search" onClick={ this.onSearch }>Search</button>
 
                     {/* change key */}
@@ -119,13 +121,14 @@ class Tab3 extends Component{
 
                     <div class="bottomRow">
                         <div className="ad">
-                            <img src={petco} alt="petco" onClick = {this.adInfo}></img>
                             <button className="reviewButton" onClick = {this.adReview}>Review Here</button>
+                            <img src={petco} className="ad" alt="petco" onClick = {this.adInfo}></img>
+                            
                         </div>
                     </div>
 
                     <div id="popup" className="popup">
-                        <button onClick = {this.closeReview}>Close</button>
+                        <button className="closeButton" onClick = {this.closeReview}>✕</button>
                         <ReviewPage/>
                     </div>
                     

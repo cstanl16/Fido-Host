@@ -115,6 +115,28 @@
     align-items: center;
 }
 
+.closeButton {
+    background: transparent;
+    color: black;
+    font-size: 30px;
+    margin-top: 2%;
+    margin-left: 95%;
+}
+
+
+.reviewButton {
+    display: block;
+    height: 40px;
+    bottom: 0;
+    width: 200px;
+    margin-top: 40px;
+    
+}
+
+.ad {
+    display: block;
+}
+
 /************************************* Profile Page ***********************************/
 
 .createUserPage {
@@ -270,6 +292,8 @@
     width: 20%;
     margin-left: 40%;
 }
+
+
 
 
 
