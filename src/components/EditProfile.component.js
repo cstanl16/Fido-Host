@@ -103,32 +103,32 @@ class EditProfile extends Component {
         const name = user.name; 
 
         return (
-            <div className="createUserPage">
-                <h3 className="createUserH3">Create account</h3>
+            <div className="editUserPage">
+                <h3 className="editUserH3">Create account</h3>
                 <form className="createUserForm" onSubmit={this.onSubmit}>
 
                     <div className="">
-                        <input type="text" placeholder="Full Name" className="createUserInput" value={this.state.name} onChange={this.onChangeName}/>
+                        <input type="text" placeholder="Full Name" className="editUserInput" value={this.state.name} onChange={this.onChangeName}/>
                     </div>
 
                     <div>
-                        <input type="text" placeholder={name} className="createUserInput" value={name} readOnly/>
+                        <input type="text" placeholder={name} className="editUserInput" value={name} readOnly/>
                     </div>
 
                     <div>
-                        <input type="text" placeholder="email" className="createUserInput" value={this.state.email} onChange={this.onChangeEmail}/>
+                        <input type="text" placeholder="email" className="editUserInput" value={this.state.email} onChange={this.onChangeEmail}/>
                     </div>
 
                     <div>
-                            <input type="text" placeholder="Dog Type" className="createUserInput" value={this.state.dogType} onChange={this.onChangeDogType}/>
+                            <input type="text" placeholder="Dog Type" className="editUserInput" value={this.state.dogType} onChange={this.onChangeDogType}/>
                     </div>
 
                     <div>
-                            <input type="text" placeholder="Dog Name" className="createUserInput" value={this.state.dogName} onChange={this.onChangeDogName}/>
+                            <input type="text" placeholder="Dog Name" className="editUserInput" value={this.state.dogName} onChange={this.onChangeDogName}/>
                     </div>
 
-                    <div className="createUserButtonDiv">
-                        <button id="createUserSubmitButton" className="createUserButton" onSubmit={this.onSubmit}>done! </button>
+                    <div className="editUserButtonDiv">
+                        <button id="createUserSubmitButton" className="editUserButton" onSubmit={this.onSubmit}>done! </button>
                     </div>
                     
                 </form>

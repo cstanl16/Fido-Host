@@ -23,6 +23,7 @@ class Tab3 extends Component{
             searchFood: '',
             foodSafe: '',
             count: 0,
+            username: 'cstanl16@uncc.edu'
 
         }
     }
@@ -121,15 +122,14 @@ class Tab3 extends Component{
 
                     <div class="bottomRow">
                         <div className="ad">
-                            <button className="reviewButton" onClick = {this.adReview}>Review Here</button>
+                            <button className="reviewButton" onClick = {this.adReview}>Review Ad</button>
                             <img src={petco} className="ad" alt="petco" onClick = {this.adInfo}></img>
-                            
                         </div>
                     </div>
 
                     <div id="popup" className="popup">
                         <button className="closeButton" onClick = {this.closeReview}>✕</button>
-                        <ReviewPage/>
+                        <ReviewPage username={this.state.username}/>
                     </div>
                     
                 </div>

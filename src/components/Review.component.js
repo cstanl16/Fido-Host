@@ -15,19 +15,11 @@ class Review extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            username: '',
             adID: 'petco',
             rating: '',
             comments: ''
         };
     };
-
-    componentDidMount() {
-
-        this.setState({
-            username: this.props.username
-        });
-    }
 
     onChangeComments(e) {
         this.setState({
@@ -120,7 +112,7 @@ class Review extends Component {
         e.preventDefault();
 
         const review = {
-            username: this.state.username,
+            username: this.props.username,
             adID: this.state.adID,
             rating: this.state.rating,
             comments: this.state.comments
@@ -133,8 +125,8 @@ class Review extends Component {
         var y = document.querySelector(".postSubmit");
             y.style.display = "block";
 
-        Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/review/add', review)
-        //Axios.post('http://localhost:8080/review/add', review)
+        //Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/review/add', review)
+        Axios.post('http://localhost:8080/review/add', review)
             .then(res => {
                 console.log(res.data);
 

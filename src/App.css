@@ -31,7 +31,14 @@
 .foodListShow {
     display: none;
 }
-
+.learnMore {
+    text-align: center;
+    align-items: center;
+}
+.moreInfoOnSearch {
+    --background: aqua;
+    color: black;
+}
 .bottomRow {
     display: block;
     position: absolute;
@@ -46,8 +53,31 @@
     height: 40px;
     bottom: 0;
     width: 200px;
-    margin-top: 40px;
-    
+    margin-top: 40px; 
+}
+.popup {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 30vh;
+    margin-bottom: 50vh;
+    height: 30vh;
+    width: 80vw;
+    border-radius: 10px;
+    background:rgba(255,255,255,0.80);
+    z-index: 2;
+}
+.closeButton {
+    background: transparent;
+    color: black;
+    font-size: 30px;
+    margin-top: 2%;
+    margin-left: 95%;
 }
 
 
@@ -56,10 +86,7 @@
     text-align: center;
 }
 
-.moreInfoOnSearch {
-    --background: aqua;
-    color: black;
-}
+
 
 
 
@@ -119,18 +146,9 @@
     font-family: fantasy;
 }
 
-.learnMore {
-    text-align: center;
-    align-items: center;
-}
 
-.closeButton {
-    background: transparent;
-    color: black;
-    font-size: 30px;
-    margin-top: 2%;
-    margin-left: 95%;
-}
+
+
 
 
 
@@ -141,7 +159,9 @@
     margin: 0px;
     padding: 0px;
     background-color: #5CDB95;
-    height: 1000px;
+    height: 96vh;
+    width: 100vw;
+    overflow: scroll;
 }
 
 .createUserH3 {
@@ -151,11 +171,27 @@
     font-family: bold, Arial, Helvetica, sans-serif;
     font-size: 40px;
 }
+.profileDiv {
+    display: block;
+    background: white;
+    margin-left: 10vw;
+    width: 80vw;
+    height: 25vh;
+    margin-bottom: 2vh;
+}
+.reviewPost {
+    display: block;
+    background: white;
+    margin-left: 10vw;
+    width: 80vw;
+    height: 25vh;
+    margin-bottom: 2vh;
+}
 
 .createUserInput {
     margin: 0px;
-    margin-left: 30%;
-    width: 40%;
+    margin-left: 5%;
+    width: 90%;
     text-align: left;
     align-items: center;
     background: white;
@@ -174,13 +210,68 @@
 .createUserInput:focus {
     outline: none;
 }
-
 .createUserButtonDiv {
     text-align: center;
 
 }
-
 .createUserButton {
+        margin: 0px;
+        width: 50%;
+        text-align: center;
+        align-items: center;
+        height: 55px;
+        border-radius: 8px;
+        border-width: 0px;
+        display: inline-block;
+        color: black;
+        padding: 0px;
+        font-size: 20px;
+        margin-bottom: 1vh;
+}
+
+/************************************* Edit Profile Page ***********************************/
+
+.editUserPage {
+    margin: 0px;
+    padding: 0px;
+    background-color: #5CDB95;
+    height: 1000px;
+    overflow: scroll;
+}
+
+.editUserH3 {
+    margin: 0px;
+    padding: 40px;
+    text-align: center;
+    font-family: bold, Arial, Helvetica, sans-serif;
+    font-size: 40px;
+}
+.editUserInput {
+    margin: 0px;
+    margin-left: 5%;
+    width: 90%;
+    text-align: left;
+    align-items: center;
+    background: white;
+    height: 44px;
+    border-radius: 8px;
+    border-width: 0px;
+    display: inline-block;
+    color: black;
+    margin-right: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.editUserInput:focus {
+    outline: none;
+}
+.editUserButtonDiv {
+    text-align: center;
+
+}
+.editUserButton {
         margin: 0px;
         width: 50%;
         text-align: center;
@@ -196,57 +287,7 @@
         font-size: 20px;
 }
 
-.Disabled {
-    margin: 0px;
-    width: 15%;
-    text-align: center;
-    align-items: center;
-    height: 44px;
-    border-radius: 8px;
-    border-width: 0px;
-    display: inline-block;
-    color: black;
-    margin-right: 0px;
-    padding: 0px;
-    padding-left: 10px;
-    font-size: 20px;
-    pointer-events: none;
-}
-
-.noMatch {
-    display: inline-block;
-    color: #ff0033 ;
-    font-size: 24px;
-    margin: 0px;
-    padding: 0px;
-    margin-left: 30%;
-}
-
-.Match {
-    display: none;
-}
-
-/************************************* Edit Profile Page ***********************************/
-
 /************************************* Ad Review PopUp and Review Component ***********************************/
-
-.popup {
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right:0;
-    margin-left: 10vw;
-    margin-right: 10vw;
-    margin-top: 30vh;
-    margin-bottom: 50vh;
-    height: 30vh;
-    width: 80vw;
-    border-radius: 10px;
-    background:rgba(255,255,255,0.80);
-    z-index: 2;
-}
 
 .ratingPage {
     margin: 0px;
