@@ -4,6 +4,11 @@ import React from 'react';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { searchOutline, personOutline} from 'ionicons/icons';
+import { App as CapApp } from "@capacitor/app";
+import { Browser } from "@capacitor/browser";
+import { callbackUri } from "./auth.config";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 
 import PrivateRoute from './components/PrivateRoute.js';
 import FoodList from './components/food-list.component.js';
@@ -39,7 +44,23 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App = () => {
+const App: React.FC = () => {
+  const { handleRedirectCallback } = useAuth0();
+
+  useEffect(() => {
+    CapApp.addListener("appUrlOpen", async ({ url }) => {
+      if (url.startsWith(callbackUri)) {
+        if (
+          url.includes("state") &&
+          (url.includes("code") || url.includes("error"))
+        ) {
+          await handleRedirectCallback(url);
+        }
+
+        await Browser.close();
+      }
+    });
+  }, [handleRedirectCallback]);
 
     return (
       <IonApp>
