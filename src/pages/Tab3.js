@@ -36,7 +36,7 @@ class Tab3 extends Component{
 
     onChange(event) {
         var temp = event.target.value;
-        temp = temp.substring(0, 1).toUpperCase() + temp.substring(1);
+        temp = temp.substring(0, 1).toUpperCase() + temp.substring(1).toLowerCase();
         this.setState({searchText: temp});
         var x = document.getElementById("foodListShow");
            x.style.display = "none";                                 

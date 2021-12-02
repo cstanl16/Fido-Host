@@ -125,8 +125,8 @@ class Review extends Component {
         var y = document.querySelector(".postSubmit");
             y.style.display = "block";
 
-        //Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/review/add', review)
-        Axios.post('http://localhost:8080/review/add', review)
+        //Axios.post('http://localhost:8080/review/add', review)
+        Axios.post('https://final-project-node-server-zron8.ondigitalocean.app/review/add', review)
             .then(res => {
                 console.log(res.data);
 
