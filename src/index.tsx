@@ -1,18 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { Auth0Provider } from "@auth0/auth0-react";
-import { domain as auth0Domain, clientId, callbackUri } from "./auth.config";
+import Auth0ProviderWithHistory from "./auth0-provider-with-history";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-                domain={auth0Domain}
-                clientId={clientId}
-                redirectUri={callbackUri}
-            >
-                <App/>
-            </Auth0Provider>
-  </React.StrictMode>,
+    <Auth0ProviderWithHistory>
+      <App />
+    </Auth0ProviderWithHistory>
+  </React.StrictMode>
+  ,
   document.getElementById('root')
 );
